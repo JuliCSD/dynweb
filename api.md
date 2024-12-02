@@ -1,7 +1,5 @@
-## Lulea Newspaper API
 
-------------------------------------------------------------------------------------------
-# Documentation
+#  Lulea Newspaper API: Documentation
 
 ## Overview
 
@@ -28,7 +26,7 @@ This API provides endpoints for managing articles, tags, users, user groups, use
 </details>
 
 <details>
- <summary><code>GET</code> <code><b>/article_tag/:articleId/:tagId</b></code> <code> (gets a specific article tag by article ID and tag ID)</code></summary>
+ <summary><code>GET</code> <code><b>/article_tag/:articleId/:tagId</b></code> <code> (gets a specific article tag by article ID and ID)</code></summary>
 
 ##### Parameters
 
@@ -308,7 +306,6 @@ This API provides endpoints for managing articles, tags, users, user groups, use
 > | `200`         | `application/json`                | returns a list of tags                                              |
 > | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
- **Authorization**: Requires `admin` role. 
 </details>    
 
 <details>
@@ -325,7 +322,6 @@ This API provides endpoints for managing articles, tags, users, user groups, use
 > | `200`         | `application/json`                | returns the tag                                                     |
 > | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
- **Authorization**: Requires `admin` role. 
 </details>    
 
 <details>
@@ -391,166 +387,294 @@ This API provides endpoints for managing articles, tags, users, user groups, use
 
 ### User Group Members
 
-#### Get All User Group Members
+<details>
+ <summary><code>GET</code> <code><b>/user_group_member</b></code> <code> (gets all user group members)</code></summary>
 
-- **URL**: `/user_group_member`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves all user group members.
-- **Response**:
-  - `200 OK`: Returns a list of user group members.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific User Group Member
+> None
 
-- **URL**: `/user_group_member/:groupId/:userId`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves a specific user group member by group ID and user ID.
-- **Response**:
-  - `200 OK`: Returns the user group member.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create User Group Member
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns a list of user group members                                |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/user_group_member`
-- **Method**: `POST`
-- **Authorization**: Requires `admin` role.
-- **Description**: Creates a new user group member.
-- **Request Body**:
-  - `group_id`: Integer
-  - `user_id`: Integer
-- **Response**:
-  - `200 OK`: Returns the created user group member.
-  - `400 Bad Request`: Invalid request.
+ **Authorization**: Requires `admin` role. 
+</details>    
 
-#### Delete User Group Member
+<details>
+ <summary><code>GET</code> <code><b>/user_group_member/:groupId/:userId</b></code> <code> (gets a specific user group member by group ID and user ID)</code></summary>
 
-- **URL**: `/user_group_member/:groupId/:userId`
-- **Method**: `DELETE`
-- **Authorization**: Requires `admin` role.
-- **Description**: Deletes a user group member.
-- **Response**:
-  - `200 OK`: Returns the deleted user group member.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `groupId          |  required | Int            | role group ID                       |
+> | `userId`          |  required | Int            | user ID                             |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the user group member                                       |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+**Authorization**: Requires `admin` role. 
+</details>    
+
+<details>
+ <summary><code>POST</code> <code><b>/user_group_member</b></code> <code> (creates a new user group member)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `group_id         |  required | Int            | role group ID                       |
+> | `user_id`         |  required | Int            | user ID                             |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created user group member                                             |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>     
+
+<details><summary><code>NO UPDATE</code> <code> (there is only the primary key!)</code></summary></details>        
+
+<details>
+ <summary><code>DELETE</code> <code><b>/tag/:id</b></code> <code> (deletes a tag)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | tag name                            |
+> | `color`           |  required | String         | tag color                           |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted tag                                             |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>   
+
+
+
+
+
 
 ### User Groups
 
-#### Get All User Groups
+<details>
+ <summary><code>GET</code> <code><b>/user_group</b></code> <code> (gets all user groups)</code></summary>
 
-- **URL**: `/user_group`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves all user groups.
-- **Response**:
-  - `200 OK`: Returns a list of user groups.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific User Group
+> None
 
-- **URL**: `/user_group/:id`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves a specific user group by ID.
-- **Response**:
-  - `200 OK`: Returns the user group.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create User Group
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns a list of user groups                                       |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/user_group`
-- **Method**: `POST`
-- **Authorization**: Requires `admin` role.
-- **Description**: Creates a new user group.
-- **Request Body**:
-  - `name`: String
-- **Response**:
-  - `200 OK`: Returns the created user group.
-  - `400 Bad Request`: Invalid request.
+ **Authorization**: Requires `admin` role. 
+</details>    
 
-#### Update User Group
+<details>
+ <summary><code>GET</code> <code><b>/user_group/:id</b></code> <code> (gets a specific user group by ID)</code></summary>
 
-- **URL**: `/user_group/:id`
-- **Method**: `PUT`
-- **Authorization**: Requires `admin` role.
-- **Description**: Updates an existing user group.
-- **Request Body**:
-  - `name`: String
-- **Response**:
-  - `200 OK`: Returns the updated user group.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Delete User Group
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `id`              |  required | Int            | role group ID                       |
 
-- **URL**: `/user_group/:id`
-- **Method**: `DELETE`
-- **Authorization**: Requires `admin` role.
-- **Description**: Deletes a user group.
-- **Response**:
-  - `200 OK`: Returns the deleted user group.
-  - `400 Bad Request`: Invalid request.
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the user group                                              |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>    
+
+<details>
+ <summary><code>POST</code> <code><b>/user_group</b></code> <code> (creates a new user group)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | role group name                     |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created user group                                      |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>     
+
+<details>
+ <summary><code>PUT</code> <code><b>/user_group/:id</b></code> <code> (updates an existing user group)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | role group name                     |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the updated user group                                      |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>       
+
+<details>
+ <summary><code>DELETE</code> <code><b>/user_group/:id</b></code> <code> (deletes an user group)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `id`              |  required | Int            | user group ID                       |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted user group                                      |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>   
+
+
+
+
+
+
+
 
 ### Users
 
-#### Get All Users
+<details>
+ <summary><code>GET</code> <code><b>/users</b></code> <code> (gets all users)</code></summary>
 
-- **URL**: `/users`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves all users.
-- **Response**:
-  - `200 OK`: Returns a list of users.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific User
+> None
 
-- **URL**: `/users/:id`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves a specific user by ID.
-- **Response**:
-  - `200 OK`: Returns the user.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create User
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns a list of users                                             |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/users`
-- **Method**: `POST`
-- **Authorization**: Requires `admin` role.
-- **Description**: Creates a new user.
-- **Request Body**:
-  - `name`: String
-  - `email`: String
-  - `password`: String
-  - `totp_secret`: String
-- **Response**:
-  - `200 OK`: Returns the created user.
-  - `400 Bad Request`: Invalid request.
+ **Authorization**: Requires `admin` role. 
+</details>    
 
-#### Update User
+<details>
+ <summary><code>GET</code> <code><b>/users/:id</b></code> <code> (gets a specific user by ID)</code></summary>
 
-- **URL**: `/users/:id`
-- **Method**: `PUT`
-- **Authorization**: Requires `admin` role.
-- **Description**: Updates an existing user.
-- **Request Body**:
-  - `name`: String
-  - `email`: String
-  - `password`: String
-  - `totp_secret`: String
-- **Response**:
-  - `200 OK`: Returns the updated user.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Delete User
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `id`              |  required | Int            | user ID                             |
 
-- **URL**: `/users/:id`
-- **Method**: `DELETE`
-- **Authorization**: Requires `admin` role.
-- **Description**: Deletes a user.
-- **Response**:
-  - `200 OK`: Returns the deleted user.
-  - `400 Bad Request`: Invalid request.
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the user                                                    |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>    
+
+<details>
+ <summary><code>POST</code> <code><b>/users</b></code> <code> (creates a new user)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | username                            |
+> | `email`           |  required | String         | unique email                        |
+> | `password`        |  required | String         | password in clear text              |
+> | `totp_secret`     |  required | String         | 2-factor authenticator password     |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created user                                            |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>     
+
+<details>
+ <summary><code>PUT</code> <code><b>/user/:id</b></code> <code> (updates an existing user)</code></summary>
+
+##### Request Body
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | username                            |
+> | `email`           |  required | String         | unique email                        |
+> | `password`        |  required | String         | password in clear text              |
+> | `totp_secret`     |  required | String         | 2-factor authenticator password     |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the updated user                                            |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>       
+
+<details>
+ <summary><code>DELETE</code> <code><b>/users/:id</b></code> <code> (deletes an user)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `id`              |  required | Int            | user ID                             |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted user                                            |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details> 
+
+
 
 ## Authorization
 
@@ -563,4 +687,3 @@ Certain endpoints require specific roles for access. The `groupAuthorization` mi
 
 All endpoints return a `400 Bad Request` status code with a message if the request is invalid or if an error occurs during the database operation.
 
-------------------------------------------------------------------------------------------
