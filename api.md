@@ -1,7 +1,7 @@
 ## Lulea Newspaper API
 
 ------------------------------------------------------------------------------------------
-# API Documentation
+# Documentation
 
 ## Overview
 
