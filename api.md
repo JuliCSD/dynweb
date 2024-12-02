@@ -1,5 +1,5 @@
 
-#  Lulea Newspaper API: Documentation
+#  Luleå Newspaper API: Documentation
 
 ## Overview
 
