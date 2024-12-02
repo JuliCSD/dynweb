@@ -11,219 +11,382 @@ This API provides endpoints for managing articles, tags, users, user groups, use
 
 ### Article Tags
 
-#### Get All Article Tags
+<details>
+ <summary><code>GET</code> <code><b>/article_tag</b></code> <code> (gets all article tags)</code></summary>
 
-- **URL**: `/article_tag`
-- **Method**: `GET`
-- **Description**: Retrieves all article tags.
-- **Response**:
-  - `200 OK`: Returns a list of article tags.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific Article Tag
+> None
 
-- **URL**: `/article_tag/:articleId/:tagId`
-- **Method**: `GET`
-- **Description**: Retrieves a specific article tag by article ID and tag ID.
-- **Response**:
-  - `200 OK`: Returns the article tag.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create Article Tag
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns list of article tags                                                |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/article_tag`
-- **Method**: `POST`
-- **Authorization**: Requires `author` role.
-- **Description**: Creates a new article tag.
-- **Request Body**:
-  - `article_id`: Integer
-  - `tag_id`: Integer
-- **Response**:
-  - `200 OK`: Returns the created article tag.
-  - `400 Bad Request`: Invalid request.
+</details>
 
-#### Delete Article Tag
+<details>
+ <summary><code>GET</code> <code><b>/article_tag/:articleId/:tagId</b></code> <code> (gets a specific article tag by article ID and tag ID)</code></summary>
 
-- **URL**: `/article_tag/:articleId/:tagId`
-- **Method**: `DELETE`
-- **Authorization**: Requires `author` role.
-- **Description**: Deletes an article tag.
-- **Response**:
-  - `200 OK`: Returns the deleted article tag.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `articleId`       |  required | int            | returns specific article id         |
+> | `tagId`           |  required | int            | returns specific tagId id           |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the specific article tag                                    |
+> | `400`         | `application/json`                | returns { message: "Invalid request" }                              |
+
+</details>
+
+
+<details>
+ <summary><code>POST</code> <code><b>/article_tag</b></code> <code> (creates a new article tag)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `article_id`      |  required | int            | specific article id                 |
+> | `tag_id`          |  required | int            | specific tagId id                   |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created article tag                                     |
+> | `400`         | `application/json`                | returns { message: "Invalid request" }                              |
+
+
+ **Authorization**: Requires `author` role. 
+
+</details>  
+
+<details>
+ <summary><code>DELETE</code> <code><b>/article_tag/:articleId/:tagId</b></code> <code> (deletes an article tag)</code></summary>
+
+##### Parameters
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `article_id`      |  required | int            | specific article id                 |
+> | `tag_id`          |  required | int            | specific tagId id                   |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted article tag                                     |
+> | `400`         | `application/json`                | returns { message: "Invalid request" }                              |
+
+
+ **Authorization**: Requires `author` role. 
+
+</details>    
+
 
 ### Articles
 
-#### Get All Articles
+<details>
+ <summary><code>GET</code> <code><b>/article</b></code> <code> (gets all articles)</code></summary>
 
-- **URL**: `/article`
-- **Method**: `GET`
-- **Description**: Retrieves all articles.
-- **Response**:
-  - `200 OK`: Returns a list of articles.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific Article
+> None
 
-- **URL**: `/article/:id`
-- **Method**: `GET`
-- **Description**: Retrieves a specific article by ID.
-- **Response**:
-  - `200 OK`: Returns the article.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create Article
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns list of articles                                            |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/article`
-- **Method**: `POST`
-- **Authorization**: Requires `author` role.
-- **Description**: Creates a new article.
-- **Request Body**:
-  - `title`: String
-  - `content`: String
-  - `image_url`: String
-  - `user_id`: Integer
-- **Response**:
-  - `200 OK`: Returns the created article.
-  - `400 Bad Request`: Invalid request.
+</details>
 
-#### Update Article
+ <details>
+ <summary><code>GET</code> <code><b>/article/:id</b></code> <code> (gets a specific article by ID)</code></summary>
 
-- **URL**: `/article/:id`
-- **Method**: `PUT`
-- **Authorization**: Requires `author` role.
-- **Description**: Updates an existing article.
-- **Request Body**:
-  - `title`: String
-  - `content`: String
-  - `image_url`: String
-  - `user_id`: Integer
-- **Response**:
-  - `200 OK`: Returns the updated article.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Delete Article
+> None
 
-- **URL**: `/article/:id`
-- **Method**: `DELETE`
-- **Authorization**: Requires `author` role.
-- **Description**: Deletes an article.
-- **Response**:
-  - `200 OK`: Returns the deleted article.
-  - `400 Bad Request`: Invalid request.
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the article                                                 |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+</details> 
+
+<details>
+ <summary><code>POST</code> <code><b>/article</b></code> <code> (creates a new article)</code></summary>
+
+##### Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `title`           |  required | String         | article title                       |
+> | `content`         |  required | String         | article body                        |
+> | `image_url`       |  required | String         | article image link                  |
+> | `user_id`         |  required | Int            | author's user ID                    |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created article                                         |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `author` role. 
+</details>      
+
+<details>
+ <summary><code>PUT</code> <code><b>/article/:id</b></code> <code> (updates an existing article)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `title`           |  required | String         | article title                       |
+> | `content`         |  required | String         | article body                        |
+> | `image_url`       |  required | String         | article image link                  |
+> | `user_id`         |  required | Int            | author's user ID                    |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the updated article                                         |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `author` role. 
+</details>    
+
+<details>
+ <summary><code>DELETE</code> <code><b>/article/:id</b></code> <code> (deletes an article using ID)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `title`           |  required | String         | article title                       |
+> | `content`         |  required | String         | article body                        |
+> | `image_url`       |  required | String         | article image link                  |
+> | `user_id`         |  required | Int            | author's user ID                    |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted article                                         |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `author` role. 
+</details>   
+
 
 ### Settings
 
-#### Get All Settings
+<details>
+ <summary><code>GET</code> <code><b>/setting</b></code> <code> (gets all settings)</code></summary>
 
-- **URL**: `/setting`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves all settings.
-- **Response**:
-  - `200 OK`: Returns a list of settings.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific Setting
+> None
 
-- **URL**: `/setting/:userid`
-- **Method**: `GET`
-- **Authorization**: Requires `admin` role.
-- **Description**: Retrieves a specific setting by user ID.
-- **Response**:
-  - `200 OK`: Returns the setting.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create Setting
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns a list of settings                                          |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/setting`
-- **Method**: `POST`
-- **Authorization**: Requires `admin` role.
-- **Description**: Creates a new setting.
-- **Request Body**:
-  - `load_images`: Boolean
-  - `user_id`: Integer
-- **Response**:
-  - `200 OK`: Returns the created setting.
-  - `400 Bad Request`: Invalid request.
+ **Authorization**: Requires `admin` role. 
+</details> 
+ 
+ 
+<details>
+ <summary><code>GET</code> <code><b>/setting/:userid</b></code> <code> (gets a specific setting by user ID)</code></summary>
 
-#### Update Setting
+##### Parameters
 
-- **URL**: `/setting/:userid`
-- **Method**: `PUT`
-- **Authorization**: Requires `admin` role.
-- **Description**: Updates an existing setting.
-- **Request Body**:
-  - `load_images`: Boolean
-- **Response**:
-  - `200 OK`: Returns the updated setting.
-  - `400 Bad Request`: Invalid request.
+> None
 
-#### Delete Setting
+##### Responses
 
-- **URL**: `/setting/:userid`
-- **Method**: `DELETE`
-- **Authorization**: Requires `admin` role.
-- **Description**: Deletes a setting.
-- **Response**:
-  - `200 OK`: Returns the deleted setting.
-  - `400 Bad Request`: Invalid request.
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the setting                                                 |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details> 
+   
+
+<details>
+ <summary><code>POST</code> <code><b>/setting</b></code> <code> (creates a new setting)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `load_images`     |  required | Boolean        | setting to display thumbnails       |
+> | `user_id`         |  required | Int            | user ID                             |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created setting                                                 |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details> 
+ 
+<details>
+ <summary><code>PUT</code> <code><b>/setting/:userid</b></code> <code> (updates an existing setting)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `load_images`     |  required | Boolean        | setting to display thumbnails       |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the updated setting                                         |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>    
+
+<details>
+ <summary><code>DELETE</code> <code><b>/setting/:userid</b></code> <code> (deletes a specific setting using user ID)</code></summary>
+
+##### Parameters
+
+> None
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted setting                                                 |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>    
 
 ### Tags
 
-#### Get All Tags
+<details>
+ <summary><code>GET</code> <code><b>/tag</b></code> <code> (gets all tags)</code></summary>
 
-- **URL**: `/tag`
-- **Method**: `GET`
-- **Description**: Retrieves all tags.
-- **Response**:
-  - `200 OK`: Returns a list of tags.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Get Specific Tag
+> None
 
-- **URL**: `/tag/:id`
-- **Method**: `GET`
-- **Description**: Retrieves a specific tag by ID.
-- **Response**:
-  - `200 OK`: Returns the tag.
-  - `400 Bad Request`: Invalid request.
+##### Responses
 
-#### Create Tag
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns a list of tags                                              |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
 
-- **URL**: `/tag`
-- **Method**: `POST`
-- **Authorization**: Requires `author` role.
-- **Description**: Creates a new tag.
-- **Request Body**:
-  - `name`: String
-  - `color`: String
-- **Response**:
-  - `200 OK`: Returns the created tag.
-  - `400 Bad Request`: Invalid request.
+ **Authorization**: Requires `admin` role. 
+</details>    
 
-#### Update Tag
+<details>
+ <summary><code>GET</code> <code><b>/tag/:id</b></code> <code> (gets a specific tag by ID)</code></summary>
 
-- **URL**: `/tag/:id`
-- **Method**: `PUT`
-- **Authorization**: Requires `author` role.
-- **Description**: Updates an existing tag.
-- **Request Body**:
-  - `name`: String
-  - `color`: String
-- **Response**:
-  - `200 OK`: Returns the updated tag.
-  - `400 Bad Request`: Invalid request.
+##### Parameters
 
-#### Delete Tag
+> None
 
-- **URL**: `/tag/:id`
-- **Method**: `DELETE`
-- **Authorization**: Requires `author` role.
-- **Description**: Deletes a tag.
-- **Response**:
-  - `200 OK`: Returns the deleted tag.
-  - `400 Bad Request`: Invalid request.
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the tag                                                     |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `admin` role. 
+</details>    
+
+<details>
+ <summary><code>POST</code> <code><b>/tag</b></code> <code> (creates a new tag)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | tag name                            |
+> | `color`           |  required | String         | tag color                           |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the created tag                                             |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `author` role. 
+</details>     
+
+<details>
+ <summary><code>PUT</code> <code><b>/tag/:id</b></code> <code> (updates an existing tag)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | tag name                            |
+> | `color`           |  required | String         | tag color                           |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the updated tag                                             |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `author` role. 
+</details>        
+
+<details>
+ <summary><code>DELETE</code> <code><b>/tag/:id</b></code> <code> (deletes a tag)</code></summary>
+
+##### Request Body
+
+> | name              |  type     | data type      | description                         |
+> |-------------------|-----------|----------------|-------------------------------------|
+> | `name`            |  required | String         | tag name                            |
+> | `color`           |  required | String         | tag color                           |
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `200`         | `application/json`                | returns the deleted tag                                             |
+> | `400`         | `application/json`                | { message: "Invalid request" }                                      |
+
+ **Authorization**: Requires `author` role. 
+</details>      
 
 
 ### User Group Members
